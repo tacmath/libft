@@ -86,6 +86,9 @@ OTHERFILES = ft_atoi.c\
 		ft_power.c\
 		ft_print_tables.c\
 		ft_print_tables_fd.c\
+		ft_super_free.c\
+		ft_super_join.c\
+		ft_quicksort.c\
 
 SRCFILES = $(addprefix $(MEMDIR),$(MEMFILES))\
 	 	$(addprefix $(STRDIR),$(STRFILES))\
@@ -98,7 +101,7 @@ INCFILES = libft.h get_next_line.h
 SRC = $(addprefix $(SRCDIR),$(SRCFILES))
 INC = $(addprefix $(INCDIR),$(INCFILES))
 OBJ = $(SRC:.c=.o)
-FLAG = -Wall #-Werror -Wextra
+FLAG = -Wall -Werror -Wextra
 
 all: $(NAME)
 

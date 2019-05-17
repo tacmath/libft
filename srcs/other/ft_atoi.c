@@ -25,8 +25,6 @@ int	ft_atoi(const char *str)
 		n++;
 	if (str[n] == '-')
 		negatif = 1;
-	else if (str[n] == '+')
-		;
 	if (str[n] == '-' || str[n] == '+')
 		n++;
 	while (str[n] >= '0' && str[n] <= '9')

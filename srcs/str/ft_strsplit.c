@@ -80,12 +80,10 @@ static char	**split(char const *s, char c, char **tab, int n)
 
 char		**ft_strsplit(char const *s, char c)
 {
-	int		n;
 	int		m;
 	char	**tab;
 
 	m = -1;
-	n = 0;
 	tab = 0;
 	if (s)
 	{
