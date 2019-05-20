@@ -6,7 +6,7 @@
 #    By: mtaquet <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/04 09:05:22 by mtaquet      #+#   ##    ##    #+#        #
-#    Updated: 2018/10/20 12:09:44 by mtaquet     ###    #+. /#+    ###.fr      #
+#    Updated: 2019/05/20 14:18:43 by mtaquet     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -89,6 +89,7 @@ OTHERFILES = ft_atoi.c\
 		ft_super_free.c\
 		ft_super_join.c\
 		ft_quicksort.c\
+		ft_realloc.c\
 
 SRCFILES = $(addprefix $(MEMDIR),$(MEMFILES))\
 	 	$(addprefix $(STRDIR),$(STRFILES))\

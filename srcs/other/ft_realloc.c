@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_super_free.c                                  .::    .:/ .      .::   */
+/*   ft_realloc.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mtaquet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/05/20 14:05:40 by mtaquet      #+#   ##    ##    #+#       */
-/*   Updated: 2019/05/20 14:05:53 by mtaquet     ###    #+. /#+    ###.fr     */
+/*   Created: 2019/05/20 14:07:14 by mtaquet      #+#   ##    ##    #+#       */
+/*   Updated: 2019/05/20 14:18:12 by mtaquet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include <stdarg.h>
 #include <stdlib.h>
 
-int	ft_super_free(int nb_arg, ...)
+void	*ft_realloc(void *mem, int old_len, int new_len)
 {
-	va_list	ap;
+	char	*tmp;
+	char	*str;
+	int		n;
 
-	va_start(ap, nb_arg);
-	while (nb_arg--)
-		free(va_arg(ap, void*));
-	va_end(ap);
-	return (0);
+	if (!(tmp = malloc(sizeof(char) * new_len)))
+		return (0);
+	str = (char*)mem;
+	n = -1;
+	while (++n < old_len && n < new_len)
+		tmp[n] = str[n];
+	free(mem);
+	return (tmp);
 }

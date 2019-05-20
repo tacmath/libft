@@ -6,7 +6,7 @@
 /*   By: mtaquet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/05 09:20:46 by mtaquet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/28 13:11:18 by mtaquet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/05/20 14:22:02 by mtaquet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,6 +22,17 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+typedef struct		s_point
+{
+	int				x;
+	int				y;
+}					t_point;
+
+void				*ft_realloc(void *mem, int old_len, int new_len);
+int					ft_super_free(int nb_arg, ...);
+char				*ft_super_join(int nb_arg, ...);
+void				ft_quicksort(void *tab, int len,
+					int type_size, int (*cmp)(void*, void*));
 int					get_next_line(const int fd, char **line);
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
