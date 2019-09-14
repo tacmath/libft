@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   ft_quicksort.c                                   .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: mtaquet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/05/20 14:02:54 by mtaquet      #+#   ##    ##    #+#       */
-/*   Updated: 2019/05/20 15:14:26 by mtaquet     ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
-/* ************************************************************************** */
 
 #include "libft.h"
 
@@ -44,7 +32,7 @@ void		ft_quicksort(void *tab, int len,
 	m = 0;
 	n = -1;
 	while (++n < len)
-		if (!cmp(&mem[n * type_size], compa))
+		if (cmp(&mem[n * type_size], compa) <= 0)
 		{
 			if (m != n)
 				swap_mem(&mem[n * type_size], &mem[m * type_size], type_size);
