@@ -18,10 +18,11 @@ static char	*strjoin(char *s1, char *s2, int total, int ret)
 	char	*str;
 	int		n;
 
-	if (!(s1 && s2))
+	if (!(s1 && s2) || !(str = malloc(sizeof(char) * (total + 1))))
+	{
+		free(s1);
 		return (0);
-	if (!(str = malloc(sizeof(char) * (total + 1))))
-		return (0);
+	}
 	n = -1;
 	ft_strcpy(str, s1);
 	while (s2[++n])
