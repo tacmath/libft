@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.c                                  .::    .:/ .      .::   */
+/*   gnl_multi_fd.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mtaquet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/18 11:54:58 by mtaquet      #+#   ##    ##    #+#       */
-/*   Updated: 2019/09/13 17:04:03 by mtaquet     ###    #+. /#+    ###.fr     */
+/*   Created: 2019/09/16 12:43:13 by mtaquet      #+#   ##    ##    #+#       */
+/*   Updated: 2019/09/16 12:47:53 by mtaquet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static char	*strjoin(char *s1, char *s2, int total, int ret)
 {
@@ -56,16 +56,6 @@ static int	get_all(const int fd, char **mem)
 	return (1);
 }
 
-int		error_strdel(void **mem, int error)
-{
-	if (mem && *mem)
-	{
-		free(*mem);
-		*mem = 0;
-	}
-	return (error);
-}
-
 int			gnl_multi_fd(const int fd, char **line)
 {
 	static char	*mem[4864];
@@ -77,7 +67,7 @@ int			gnl_multi_fd(const int fd, char **line)
 	if (!mem[fd])
 		mem[fd] = ft_memalloc(1);
 	if (!get_all(fd, mem))
-			return (-1);
+		return (-1);
 	n = -1;
 	while (mem[fd][++n] != '\n' && mem[fd][n] != '\0')
 		;

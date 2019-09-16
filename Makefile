@@ -6,7 +6,7 @@
 #    By: mtaquet <marvin@le-101.fr>                 +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/04 09:05:22 by mtaquet      #+#   ##    ##    #+#        #
-#    Updated: 2019/05/20 14:18:43 by mtaquet     ###    #+. /#+    ###.fr      #
+#    Updated: 2019/09/16 12:48:33 by mtaquet     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -90,15 +90,17 @@ OTHERFILES = ft_atoi.c\
 		ft_super_join.c\
 		ft_quicksort.c\
 		ft_realloc.c\
+		error_free.c\
+		get_next_line.c\
+		gnl_multi_fd.c\
 
 SRCFILES = $(addprefix $(MEMDIR),$(MEMFILES))\
 	 	$(addprefix $(STRDIR),$(STRFILES))\
 	 	$(addprefix $(PUTDIR),$(PUTFILES))\
 	 	$(addprefix $(LSTDIR),$(LSTFILES))\
 		$(addprefix $(OTHERDIR),$(OTHERFILES))\
-		get_next_line.c\
 
-INCFILES = libft.h get_next_line.h
+INCFILES = libft.h
 SRC = $(addprefix $(SRCDIR),$(SRCFILES))
 INC = $(addprefix $(INCDIR),$(INCFILES))
 OBJ = $(SRC:.c=.o)

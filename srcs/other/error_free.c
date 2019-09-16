@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   error_free.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: mtaquet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/18 11:50:51 by mtaquet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/29 12:15:11 by mtaquet     ###    #+. /#+    ###.fr     */
+/*   Created: 2019/09/16 12:45:26 by mtaquet      #+#   ##    ##    #+#       */
+/*   Updated: 2019/09/16 12:46:26 by mtaquet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 32
-# endif
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
+int		error_strdel(void **mem, int error)
+{
+	if (mem && *mem)
+	{
+		free(*mem);
+		*mem = 0;
+	}
+	return (error);
+}
 
-int get_next_line(const int fd, char **line);
-
-#endif
+int		error_free(void *mem, int error)
+{
+	free(mem);
+	return (error);
+}

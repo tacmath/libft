@@ -6,7 +6,7 @@
 /*   By: mtaquet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/05 09:20:46 by mtaquet      #+#   ##    ##    #+#       */
-/*   Updated: 2019/05/20 14:22:02 by mtaquet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/09/16 12:49:27 by mtaquet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,6 +14,13 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# ifndef BUFF_SIZE
+#  define BUFF_SIZE 32
+# endif
 
 typedef struct		s_list
 {
@@ -28,6 +35,10 @@ typedef struct		s_point
 	int				y;
 }					t_point;
 
+int					error_strdel(void **mem, int error);
+int					error_free(void *mem, int error);
+int					get_next_line(const int fd, char **line);
+int					gnl_multi_fd(const int fd, char **line);
 void				*ft_realloc(void *mem, int old_len, int new_len);
 int					ft_super_free(int nb_arg, ...);
 char				*ft_super_join(int nb_arg, ...);
