@@ -6,12 +6,14 @@
 /*   By: mtaquet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 11:54:58 by mtaquet      #+#   ##    ##    #+#       */
-/*   Updated: 2019/09/16 12:47:43 by mtaquet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/09/29 12:50:17 by lperron     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
+#include <stdlib.h>
 
 static char	*strjoin(char *s1, char *s2, int total, int ret)
 {
@@ -56,6 +58,16 @@ static int	get_all(const int fd, char **mem)
 	return (1);
 }
 
+static int	error_strdel(void **mem, int error)
+{
+	if (mem && *mem)
+	{
+		free(*mem);
+		*mem = 0;
+	}
+	return (error);
+}
+
 int			get_next_line(const int fd, char **line)
 {
 	static char	*mem = 0;
@@ -73,12 +85,13 @@ int			get_next_line(const int fd, char **line)
 		;
 	if (n == 0 && mem[n] == '\0')
 		return (error_strdel((void**)&mem, 0));
+	if (mem[n] == '\0' && (*line = mem))
+		return (!(mem = 0));
 	mem[n] = 0;
 	if (!(*line = ft_strdup(mem)))
 		return (error_strdel((void**)&mem, -1));
 	tmp = mem;
 	if (!(mem = ft_strdup(&tmp[n + 1])))
 		return (error_strdel((void**)&tmp, -1));
-	free(tmp);
-	return (1);
+	return (!(ft_super_free(1, tmp)));
 }

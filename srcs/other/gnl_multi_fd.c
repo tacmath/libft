@@ -6,7 +6,7 @@
 /*   By: mtaquet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/16 12:43:13 by mtaquet      #+#   ##    ##    #+#       */
-/*   Updated: 2019/09/16 12:47:53 by mtaquet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 16:29:16 by mtaquet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,12 +73,13 @@ int			gnl_multi_fd(const int fd, char **line)
 		;
 	if (n == 0 && mem[fd][n] == '\0')
 		return (error_strdel((void**)&mem[fd], 0));
+	if (!mem[n] && (*line = mem))
+		return (!(mem = 0));
 	mem[fd][n] = 0;
 	if (!(*line = ft_strdup(mem[fd])))
 		return (error_strdel((void**)&mem[fd], -1));
 	tmp = mem[fd];
 	if (!(mem[fd] = ft_strdup(&tmp[n + 1])))
 		return (error_strdel((void**)&tmp, -1));
-	free(tmp);
-	return (1);
+	return (error_strdel((void**)&tmp, 1));
 }
